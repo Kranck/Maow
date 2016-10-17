@@ -34,7 +34,7 @@ public class Serveur{
         
             System.out.println("New client : " + tmpsock.getInetAddress().toString());
             
-            Client _tmp = new Client(tmpsock,this);
+            ClientForServeur _tmp = new ClientForServeur(tmpsock,this);
             _tmp.start();
             _clients.add(_tmp);
         }
@@ -45,7 +45,7 @@ public class Serveur{
     {
         for(int i = 0 ; i < _clients.size() ; i++)
         {
-            Client tm = (Client)_clients.get(i);
+            ClientForServeur tm = (ClientForServeur)_clients.get(i);
             System.out.println(tm.GetSocket().getInetAddress().toString() + " : " + msg);
             tm.Send("["+tm.GetSocket().getInetAddress().toString() + "] : " + msg);
         }
